@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import HomePage from './ComponentPages/HomePage.js';
+import FloridaMan from './ComponentPages/FloridaMan.js';
+import CrackerCooking from './ComponentPages/CrackerCooking.js';
+import SCSunday from './ComponentPages/SelfCareSunday.js';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+       <Router>
+          <nav className="navbar">
+            <Link to="/" className="navlinks">Home</Link>
+            <Link to="/FLMan" className="navlinks">#FloridaManFriday</Link>
+            <Link to="/SCSunday" className="navlinks">#SelfcareSunday</Link>
+            <Link to="/CrackerCooking" className="navlinks">Cracker Cooking</Link>
+          </nav>
+          <Switch>
+              <Route path="/" exact component={HomePage} />
+              <Route path="/FLMan" exact component={FloridaMan} />
+              <Route path="/SCSunday" exact component={SCSunday} />
+              <Route path="/CrackerCooking" exact component={CrackerCooking} />
+          </Switch>
+          <footer className="footer">
+            <h4>C 2019 AKG</h4>
+          </footer>
+        </Router>
       </div>
     );
   }
